@@ -54,11 +54,7 @@
                     echo "<td>".$row['cliente']."</td>";
                     echo "<td>".$row['produto']."</td>";
                     echo "<td>".$row['valor']."</td>";
-                    echo "<td>";
-                        "<a name='editar' id='editar' class='btn btn-warning' href='editar.php?id=' role='button1'>"Editar"</a>"
-                        "<a name="excluir" id="excluir" class="btn btn-warning" href="#" role="button">Editar</a>
-                    </td>
-                    </tr>
+                    echo "</tr>";
                 }
                 ?>
                 <td>
