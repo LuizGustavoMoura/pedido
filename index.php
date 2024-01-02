@@ -32,6 +32,13 @@
                 </tr>
             </thead>
             <tbody>
+                <?php
+                //Conecta ao banco de dados usando PDO
+                $host = 'localhost';
+                $dbname = 'pedidos';
+                $username = 'root';
+                $password = '';
+                ?>
                 <tr class="">
                     <td scope="row">23/11/2023</td>
                     <td>José</td>
