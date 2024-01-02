@@ -44,17 +44,27 @@
                     die ("Erro ao conectar ao banco de dados:".$e->getMessage());
                 }
                 //Selecionar os dados da tabela pedidos
-                ?>
-                <tr class="">
-                    <td scope="row">23/11/2023</td>
-                    <td>José</td>
-                    <td>Mesa</td>
-                    <td>R$ 23,00</td>
-                    <td>
-                        <a name="editar" id="editar" class="btn btn-warning" href="#" role="button">Editar</a>
-                        <a name="excluir" id="excluir" class="btn btn-warning" href="#" role="button">Editar</a>
+                $sql = "SELECT * FROM pedidos";
+                $stmt = $pdo->prepare($sql);
+                $stmt->execute();
+                //Exibir os produtos
+                while ($row = $stmt->fetch()) {
+                    echo "<tr class="">";
+                    echo "<td>".$row['data']."</td>";
+                    echo "<td>".$row['cliente']."</td>";
+                    echo "<td>".$row['produto']."</td>";
+                    echo "<td>".$row['valor']."</td>";
+                    echo "<td>";
+                        "<a name='editar' id='editar' class='btn btn-warning' href='editar.php?id=' role='button1'>"Editar"</a>"
+                        "<a name="excluir" id="excluir" class="btn btn-warning" href="#" role="button">Editar</a>
                     </td>
-                </tr>
+                    </tr>
+                }
+                ?>
+                <td>
+                        <a name='editar' id='editar' class='btn btn-warning' href='editar.php?id=' role='button1'>Editar</a>
+                        <a name='excluir' id='excluir' class='btn btn-warning' href='#' role='button'>Editar</a>
+                    </td>
                 <tr class="">
                     <td scope="row">Item</td>
                     <td>Item</td>
