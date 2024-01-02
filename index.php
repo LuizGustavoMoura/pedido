@@ -38,6 +38,12 @@
                 $dbname = 'pedidos';
                 $username = 'root';
                 $password = '';
+                try {
+                    $pdo = new PDO ("mysql:host=$host;dbname=$dbname,$username,$password;");
+                } catch (PDOException $e) {
+                    die ("Erro ao conectar ao banco de dados:".$e->getMessage());
+                }
+                //Selecionar os dados da tabela pedidos
                 ?>
                 <tr class="">
                     <td scope="row">23/11/2023</td>
