@@ -49,7 +49,7 @@
                 $stmt->execute();
                 //Exibir os produtos
                 while ($row = $stmt->fetch()) {
-                    echo "<tr class="">";
+                    echo "<tr class=''>";
                     echo "<td>".$row['data']."</td>";
                     echo "<td>".$row['cliente']."</td>";
                     echo "<td>".$row['produto']."</td>";
