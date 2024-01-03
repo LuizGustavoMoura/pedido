@@ -1,3 +1,22 @@
+<?php
+//Conecta ao banco de dados usando PDO
+$host = 'localhost';
+$dbname = 'pedidos';
+$username = 'root';
+$password = '';
+try {
+    $pdo = new PDO ("mysql:host=$host;dbname=$dbname,$username,$password;");
+} catch (PDOException $e) {
+    die ("Erro ao conectar ao banco de dados:".$e->getMessage());
+}
+//Verifica se os dados foram enviados
+if ($_SERVER['REQUEST_METHOD']=='POST') {
+    $data = $_POST['data'];
+    $cliente = $_POST['cliente'];
+    $produto = $_POST['produto'];
+    $valor = $_POST['valor'];
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
