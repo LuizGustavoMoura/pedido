@@ -15,10 +15,21 @@ if ($_SERVER['REQUEST_METHOD']=='POST') {
     $cliente = $_POST['cliente'];
     $produto = $_POST['produto'];
     $valor = $_POST['valor'];
+    //Inserir os dados na tabela pedidos
+    $sql = "INSERT INTO pedidos (data, cliente, produto, valor) VALUES (:data, :cliente, :produto, :valor)";
+    $stmt = $pdo->prepare($sql);
+    $stmt->bindValue(':data', $data);
+    $stmt->bindValue(':cliente', $cliente);
+    $stmt->bindValue(':produto', $produto);
+    $stmt->bindValue(':valor', $valor);
+    $stmt->execute();
+    //Volta para a página inicial
+    header('Location: index.php');
+    exit();
 }
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
