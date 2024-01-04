@@ -33,7 +33,7 @@
             </thead>
             <tbody>
                 <?php
-                //Conecta ao banco de dados usando PDO
+                // Conectar ao banco de dados usando PDO
                 $host = 'localhost';
                 $dbname = 'pedidos';
                 $username = 'root';
@@ -43,11 +43,11 @@
                 } catch (PDOException $e) {
                     die ("Erro ao conectar ao banco de dados:".$e->getMessage());
                 }
-                //Selecionar os dados da tabela pedidos
+                // Selecionar os dados da tabela pedidos
                 $sql = "SELECT * FROM pedidos";
                 $stmt = $pdo->prepare($sql);
                 $stmt->execute();
-                //Exibir os produtos
+                // Exibir os produtos
                 while ($row = $stmt->fetch()) {
                     echo "<tr class=''>";
                     echo "<td>".$row['data']."</td>";
