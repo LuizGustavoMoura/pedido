@@ -16,12 +16,8 @@
         <input type="submit" value="Salvar">
     </form>
     <hr>
-    <div
-        class="table-responsive"
-    >
-        <table
-            class="table table-primary"
-        >
+    <div class="table-responsive">
+        <table class="table table-dark table-striped table-hover">
             <thead>
                 <tr>
                     <th scope="col">Data</th>
