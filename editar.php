@@ -19,7 +19,7 @@ $id = $_GET['id'];
 // Buscar os pedidos na base de dados
 $sql = "SELECT * FROM pedidos WHERE id = :id";
 $stmt = $pdo->prepare($sql);
-$stmt->bindValue(":id", $id);
+$stmt->bindValue(':id', $id);
 $stmt->execute();
 $pedido = $stmt->fetch();
 // Verificar se os dados do pedido estão corretos
@@ -29,24 +29,26 @@ if (!$pedido) {
 }
 // Verificar se o pedido foi enviado
 if ($_SERVER['REQUEST_METHOD']=='POST') {
+    // Obter os dados do pedido do formulário
     $data = $_POST['data'];
     $cliente = $_POST['cliente'];
     $produto = $_POST['produto'];
     $valor = $_POST['valor'];
+    // Atualizar os dados da tabela pedidos
+    $sql="UPDATE pedidos SET data = :data, cliente = :cliente, produto = :produto, valor = :valor WHERE id = :id";
+    $stmt = $pdo->prepare($sql);
+    $stmt->bindValue(':data', $data);
+    $stmt->bindValue(':cliente', $cliente);
+    $stmt->bindValue(':produto', $produto);
+    $stmt->bindValue(':valor', $valor);
+    $stmt->bindValue(':id', $id);
+    $stmt->execute();
+    // Depois de salvar, vai para a página inicial
+    header('Location: index.php');
+    exit();
 }
-// Atualizar os dados da tabela pedidos
-$sql="UPDATE pedidos SET data = :data, cliente = :cliente, produto = :produto, valor = :valor WHERE id = :id";
-$stmt = $pdo->prepare($sql);
-$stmt->bindValue(':data', $data);
-$stmt->bindValue(':cliente', $cliente);
-$stmt->bindValue(':produto', $produto);
-$stmt->bindValue(':valor', $valor);
-$stmt->bindValue(':id', $id);
-$stmt->execute();
-// Depois de salvar, vai para a página inicial
-header('Location: index.php');
-exit();
 ?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
