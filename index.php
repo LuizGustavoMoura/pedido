@@ -39,9 +39,9 @@
                 $username = 'root';
                 $password = '';
                 try {
-                    $pdo = new PDO ("mysql:host=$host;dbname=$dbname,$username,$password;");
+                    $pdo = new PDO("mysql:host=$host;dbname=$dbname",$username,$password);
                 } catch (PDOException $e) {
-                    die ("Erro ao conectar ao banco de dados:".$e->getMessage());
+                    die ("Erro ao conectar ao banco de dados".$e->getMessage());
                 }
                 // Selecionar os dados da tabela pedidos
                 $sql = "SELECT * FROM pedidos";

@@ -5,9 +5,9 @@ $dbname = 'pedidos';
 $username = 'root';
 $password = '';
 try {
-    $pdo = new PDO ("mysql:host=$host;dbname=$dbname,$username,$password;");
+    $pdo = new PDO("mysql:host=$host;dbname=$dbname",$username,$password);
 } catch (PDOException $e) {
-    die ("Erro ao conectar ao banco de dados:".$e->getMessage());
+    die ("Erro ao conectar ao banco de dados".$e->getMessage());
 }
 // Verificar o parâmetro do ID
 if (!isset($_GET['id'])) {
@@ -19,13 +19,14 @@ $id = $_GET['id'];
 // Buscar os pedidos na base de dados
 $sql = "SELECT * FROM pedidos WHERE id = :id";
 $stmt = $pdo->prepare($sql);
-$stmt->bindValue(':id', $id);
+$stmt->bindValue(":id", $id);
 $stmt->execute();
 $pedido = $stmt->fetch();
 // Verificar se os dados do pedido estão corretos
 if (!$pedido) {
     header('Location: index.php');
     exit();
+}
 // Verificar se o pedido foi enviado
 if ($_SERVER['REQUEST_METHOD']=='POST') {
     $data = $_POST['data'];
@@ -57,13 +58,13 @@ exit();
 <body>
     <h1>Editar Pedido</h1>
     <form action="editar.php?id=<?php echo $id;?>" method="post">
-        <label for="data">Data:</label>
+        <label for="data">Data: </label>
             <input type="datetime-local" name="data" id="data" value="<?php echo $pedido['data'];?>">
-        <label for="cliente">Cliente:</label>
+        <label for="cliente">Cliente: </label>
             <input type="text" name="cliente" id="cliente" value="<?php echo $pedido['cliente'];?>">
-        <label for="produto">Produto:</label>
+        <label for="produto">Produto: </label>
             <input type="text" name="produto" id="produto" value="<?php echo $pedido['produto'];?>">
-        <label for="valor">Valor:</label>
+        <label for="valor">Valor: </label>
             <input type="number" name="valor" id="valor" value="<?php echo $pedido['valor'];?>">
         <input type="submit" value="Salvar Alterações">
     </form>
