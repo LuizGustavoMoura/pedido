@@ -55,8 +55,8 @@
                     echo "<td>".$row['produto']."</td>";
                     echo "<td>".$row['valor']."</td>";
                     echo "<td>";
-                    echo "<a href='editar.php?id=".$row['id']."'>Editar</a>";
-                    echo "<a href='excluir.php?id=".$row['id']."'>Excluir</a>";
+                    echo "<a href='editar.php?id=".$row['id']."' class='btn btn-warning'>Editar</a>";
+                    echo "<a href='excluir.php?id=".$row['id']."' class='btn btn-danger'>Excluir</a>";
                     echo "</td>";
                     echo "</tr>";
                 }
